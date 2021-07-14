@@ -394,6 +394,52 @@ pub const REGISTRY: &[Device] = &[
         log_dso: None,
     },
     Device {
+        name: "stm32h743",
+        target: "thumbv7em-none-eabihf",
+        flash_origin: 0x0800_0000,
+        ram_origin: 0x2000_0000,
+        platform_crate: PlatformCrate {
+            krate: crates::Platform::Cortexm,
+            flag: "cortexm7_r0p1",
+            features: &["floating-point-unit", "memory-protection-unit"],
+        },
+        bindings_crate: BindingsCrate {
+            krate: crates::Bindings::Stm32,
+            flag: "stm32h743",
+            features: &["adc", "dma", "exti", "gpio", "i2c", "spi", "tim", "uart"],
+        },
+        probe_bmp: None,
+        probe_openocd: Some(ProbeOpenocd {
+            arguments: &["-f", "interface/stlink.cfg", "-f", "target/stm32h7x_dual_bank.cfg"],
+        }),
+        probe_jlink: None,
+        log_swo: Some(LogSwo { reset_freq: 16_000_000 }),
+        log_dso: None,
+    },
+    Device {
+        name: "stm32h753",
+        target: "thumbv7em-none-eabihf",
+        flash_origin: 0x0800_0000,
+        ram_origin: 0x2000_0000,
+        platform_crate: PlatformCrate {
+            krate: crates::Platform::Cortexm,
+            flag: "cortexm7_r0p1",
+            features: &["floating-point-unit", "memory-protection-unit"],
+        },
+        bindings_crate: BindingsCrate {
+            krate: crates::Bindings::Stm32,
+            flag: "stm32h743",
+            features: &["adc", "dma", "exti", "gpio", "i2c", "spi", "tim", "uart"],
+        },
+        probe_bmp: None,
+        probe_openocd: Some(ProbeOpenocd {
+            arguments: &["-f", "interface/stlink.cfg", "-f", "target/stm32h7x_dual_bank.cfg"],
+        }),
+        probe_jlink: None,
+        log_swo: Some(LogSwo { reset_freq: 16_000_000 }),
+        log_dso: None,
+    },
+    Device {
         name: "stm32l4x1",
         target: "thumbv7em-none-eabihf",
         flash_origin: 0x0800_0000,
